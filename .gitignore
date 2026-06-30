@@ -1,0 +1,34 @@
+# ── Data (regenerate with src/ scripts; too large for git) ──
+data/raw/
+data/clean/
+Bases_datos/raw/
+Bases_datos/clean/
+*.csv
+*.tsv
+*.tsv.gz
+# keep small committed samples (negation on its own line; git has no inline comments)
+!data/sample/*.csv
+# large profiling HTML reports
+perfil_*.html
+*_profiling.html
+
+# ── Archives / binaries ──
+*.zip
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ── OS / editor / agent ──
+.DS_Store
+.idea/
+.vscode/
+.claude/
+settings.local.json
+
+# Local-only preserved academic artifacts (not for the public repo)
+_local_archive/

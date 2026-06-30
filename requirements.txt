@@ -1,0 +1,23 @@
+# Core
+pandas
+numpy==2.3.4            # pinned: numpy 2.4 breaks numba / ydata-profiling
+
+# Record linkage & fuzzy matching
+recordlinkage==0.16
+thefuzz==0.22.1
+python-Levenshtein
+
+# Cheminformatics
+rdkit==2026.3.1
+
+# Profiling
+ydata-profiling
+
+# ML & viz
+scikit-learn
+matplotlib
+seaborn
+plotly
+
+# Reporting (optional)
+python-pptx==1.0.2
