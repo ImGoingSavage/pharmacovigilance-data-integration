@@ -73,9 +73,25 @@ python src/05_analysis.py                 # 24 figures (A/B/C/D)
 ├── README.md · LICENSE · requirements.txt · .gitignore
 ├── data/        raw/ clean/ (gitignored, regenerated) · sample/ (committed)
 ├── src/         01_download → 05_analysis
+├── sql/         schema.sql · analysis_queries.sql · views.sql
 ├── notebooks/   pipeline_maestro.ipynb
 ├── reports/     reporte_final.pdf · figures/ (24 PNGs)
 └── docs/        data_dictionary.md
+```
+
+## SQL analysis layer
+
+The cleaned canonical model also loads into a relational table for SQL analysis
+(`sql/schema.sql`). `sql/analysis_queries.sql` contains analytical queries —
+CTEs, window functions (`RANK() OVER (PARTITION BY …)`, share-of-total), self/aggregations,
+duplicate detection, drug–reaction frequency, and molecule-level safety exploration —
+tested on the full 152,759-row dataset in both PostgreSQL and SQLite. `sql/views.sql`
+exposes reusable `v_reaction_summary` and `v_drug_summary` views.
+
+```bash
+sqlite3 pv.db ".read sql/schema.sql" \
+  ".mode csv" ".import --skip 1 data/clean/e_drugDB_clean.csv drug_reactions" \
+  ".read sql/analysis_queries.sql"
 ```
 
 ## Limitations & ethics
